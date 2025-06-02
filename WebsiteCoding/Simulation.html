@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="Style.css"/>
+  <title>Gay-Lussac's Law Simulation Demonstration</title>
+</head>
+<body>
+  <div class="sim-container">
+    <h1>Gay-Lussac's Law Simulation</h1>
+    <p>
+      This simulation shows how the pressure of a gas changes with temperature using the formula:
+      <br>
+      <em>P = P₀ × (T / T₀)</em> with T₀ = 300 K and P₀ = 1 atm.
+    </p>
+    <p>
+      It also visualizes gas molecules moving in a fixed container. As the temperature increases, the molecules move faster.
+    </p>
+
+    <label for="tempSlider">Temperature (K): <span id="tempDisplay">300</span></label>
+    <input type="range" id="tempSlider" min="200" max="800" value="300" step="1">
+    <p>Calculated Pressure: <span id="pressureDisplay">1.00 atm</span></p>
+
+    <div class="gauge">
+      <div class="pressure-level" id="pressureBar"></div>
+    </div>
+
+    <h2>Gas Molecule Simulation</h2>
+    <canvas id="gasCanvas" width="500" height="300"></canvas>
+    <a href="Home.html">
+    <button type="button">Head back to Home Page</button>
+    </a>
+  </div>
+<script src="Script.js"></script>
+</body>
+</html>

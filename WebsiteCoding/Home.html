@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" href="Style2.css"/>
+        <title>Home</title>
+    </head>
+    <body>
+        <div class="main">
+            <nav>
+                <div class="logo">
+                    <img src="images/logo.png">
+                    <div>
+                        <h1>Joseph Louis Gay Lussacs</h1>
+                    </div>
+                </div>
+                <div class="nav-links">
+                    <ul>
+                        <li><a href="Home.html">Home</a></li>
+                        <li><a href="About.html">About Lussac</a></li>
+                        <li><a href="Simulation.html">Simulation</a></li>
+                    </ul>
+                </div>
+            </nav>
+
+            <div id="information">
+                <div class="overlay"></div>
+                <img src="images/Gay Lussacs.png" class="teacher">
+                <div id="circle">
+                    <div class="feature one">
+                        <img src="images/Baby.png">
+                        <div>
+                            <h1>Born</h1>
+                            <p>He was born on December 6, 1778<br>at Saint-Leonard-de-Noblat,<br>Died in May 9, 1850 at of age 71.</p>
+                        </div>
+                    </div>
+                    <div class="feature two">
+                        <img src="images/Education.png">
+                        <div>
+                            <h1>Education</h1>
+                            <p> He received his early education at<br>Catholic Abbey of Bourdeix.</p>
+                        </div>
+                    </div>
+                    <div class="feature three">
+                        <img src="images/Career.png">
+                        <div>
+                            <h1>Career</h1>
+                            <p>He was a Professorship<br>in Chemistry.</p>
+                        </div>
+                    </div>
+                    <div class="feature four">
+                        <img src="images/Chemist.png">
+                        <div>
+                            <h1>Discovery</h1>
+                            <p>He discovered the relationship<br>between the pressure of a gas<br> and its absolute temperature.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="controls">
+                <img src="images/arrow.png" id="upBtn">
+                <h3>Rotate me</h3>
+                <img src="images/arrow2.jpg" id="downBtn">
+            </div>
+
+        </div>
+
+        <script>
+            var circle = document.getElementById("circle");
+            var upBtn = document.getElementById("upBtn");
+            var downBtn = document.getElementById("downBtn");
+
+            var rotateValue = circle.style.transform;
+            var rotateSum;
+
+            upBtn.onclick = function()
+            {
+                rotateSum = rotateValue + "rotate(-90deg)";
+                circle.style.transform = rotateSum;
+                rotateValue = rotateSum;
+            }
+            downBtn.onclick = function()
+            {
+                rotateSum = rotateValue + "rotate(90deg)";
+                circle.style.transform = rotateSum;
+                rotateValue = rotateSum;
+            }
+        </script>
+
+
+    </body>
+</html>
