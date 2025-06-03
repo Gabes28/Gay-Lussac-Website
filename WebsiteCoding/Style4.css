@@ -1,0 +1,335 @@
+/* Universal Box-Sizing for Easier Layouts */
+* {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    box-sizing: border-box; /* Add this for better layout control */
+}
+
+/* --- Main Container --- */
+.main {
+    width: 100%;
+    min-height: 100vh; /* Use min-height to ensure content fits */
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(to right, #9c27b0, #8ecdff);
+    display: flex; /* Use flexbox for overall layout */
+    flex-direction: column; /* Stack elements vertically */
+}
+
+/* --- Navigation Bar --- */
+nav {
+    width: 90%; /* Increase width for better mobile usage */
+    max-width: 1200px; /* Optional: Set a max-width for very large screens */
+    margin: 20px auto;
+    z-index: 1;
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+    justify-content: space-between; /* Space out logo and nav links */
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-basis: auto; /* Let content determine width */
+    margin-bottom: 10px; /* Add some space below logo on small screens */
+}
+
+.logo img {
+    width: 60px; /* Slightly smaller logo for mobile */
+    max-width: 100%; /* Ensure image scales down */
+}
+
+.logo h1 {
+    font-size: 1.2em; /* Adjust font size for mobile */
+    color: #fff;
+}
+
+.nav-links {
+    flex: 1; /* Allow nav links to take remaining space */
+    text-align: right;
+    margin-top: 10px; /* Add some space above nav links on small screens */
+}
+
+.nav-links ul {
+    display: flex;
+    justify-content: flex-end; /* Align links to the right */
+    flex-wrap: wrap; /* Allow links to wrap */
+    padding: 0; /* Remove default padding */
+}
+
+.nav-links ul li {
+    list-style: none;
+    margin: 5px 10px; /* Adjust margin for mobile */
+}
+
+.nav-links ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.9em; /* Adjust font size */
+    white-space: nowrap; /* Prevent links from breaking */
+}
+
+/* --- Information Section --- */
+#information {
+    flex-grow: 1; /* Allow this section to take available space */
+    display: flex;
+    flex-direction: column; /* Stack content vertically on small screens */
+    align-items: center; /* Center items horizontally */
+    justify-content: center; /* Center items vertically */
+    padding: 20px;
+    position: relative; /* Change to relative for better flow */
+    width: 100%; /* Occupy full width */
+    max-width: 1200px; /* Optional: Max width for larger screens */
+    margin: 0 auto; /* Center the section */
+}
+
+.overlay {
+    /* This overlay creates a specific shape.
+       Making it fully responsive while maintaining its exact shape is complex.
+       Consider if this visual element is critical or can be simplified for mobile.
+       For now, we'll scale it, but it might not look perfect on all screens. */
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden; /* Hide parts that go outside */
+    z-index: 0; /* Ensure it's behind other content */
+}
+
+.overlay::before {
+    content: '';
+    position: absolute;
+    width: 200vmax; /* Larger to cover all angles */
+    height: 200vmax;
+    background: white;
+    transform: rotate(45deg); /* Rotate to create the diamond shape */
+    top: -100vmax;
+    left: -100vmax;
+    transform-origin: center center;
+    border-radius: 50%; /* Make it a circle */
+    border-top-left-radius: 0; /* Remove top-left radius to make it like the original */
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+
+.teacher {
+    width: 180px; /* Smaller image for mobile */
+    max-width: 50%; /* Ensure it doesn't get too big */
+    height: auto;
+    position: relative; /* Change to relative */
+    margin-bottom: 20px; /* Space below the image */
+    z-index: 1; /* Keep it above overlay */
+}
+
+#circle {
+    width: 300px; /* Start with a smaller circle for mobile */
+    height: 300px;
+    position: relative; /* Change to relative for better flow */
+    margin-top: 20px; /* Space above circle */
+    border-radius: 50%;
+    transform: rotate(0);
+    transition: 1s;
+    flex-shrink: 0; /* Prevent circle from shrinking */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.feature img {
+    width: 50px; /* Smaller feature icons */
+}
+
+.feature {
+    position: absolute; /* Keep absolute for rotation effect */
+    display: flex;
+    flex-direction: column; /* Stack image and text */
+    align-items: center; /* Center items within feature */
+    text-align: center;
+    color: #fff;
+    padding: 5px;
+    background: rgba(0, 0, 0, 0.3); /* Add a slight background for readability */
+    border-radius: 10px;
+}
+
+.feature div {
+    margin-top: 10px; /* Space between image and text */
+    margin-left: 0; /* Remove left margin */
+}
+
+.feature div h1 {
+    font-size: 1.1em;
+}
+
+.feature div p {
+    margin-top: 5px;
+    font-size: 0.8em;
+}
+
+/* Adjust feature positions for smaller screens - these will be relative to the circle's smaller size */
+.one {
+    top: 0;
+    right: 50%;
+    transform: translateX(50%) translateY(-50%) rotate(0deg); /* Adjust for positioning relative to center top */
+}
+.two {
+    top: 50%;
+    right: 0;
+    transform: translateX(50%) translateY(-50%) rotate(-90deg); /* Adjust for positioning relative to center right */
+}
+.three {
+    bottom: 0;
+    right: 50%;
+    transform: translateX(50%) translateY(50%) rotate(-180deg); /* Adjust for positioning relative to center bottom */
+}
+.four {
+    top: 50%;
+    left: 0;
+    transform: translateX(-50%) translateY(-50%) rotate(-270deg); /* Adjust for positioning relative to center left */
+}
+
+/* --- Controls --- */
+.controls {
+    position: relative; /* Change to relative for better flow */
+    display: flex;
+    justify-content: center; /* Center controls */
+    align-items: center;
+    margin-top: 30px; /* Space above controls */
+    padding-bottom: 20px; /* Add some padding at the bottom */
+}
+
+.controls h3 {
+    margin: 0 15px; /* Adjust margin for better spacing */
+    color: #fff;
+    font-size: 1em;
+}
+
+#upBtn, #downBtn {
+    width: 30px; /* Larger buttons for easier tapping */
+    height: 30px; /* Make buttons square */
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.2); /* Add a subtle background */
+    border-radius: 50%; /* Make them circular */
+    padding: 5px;
+}
+
+#downBtn {
+    transform: rotate(180deg); /* Keep the rotation */
+}
+
+/* --- Media Queries for Larger Screens (Desktop) --- */
+@media screen and (min-width: 768px) {
+    .logo h1 {
+        font-size: 1.8em; /* Revert to larger font size */
+    }
+
+    .nav-links ul li {
+        margin: 0 20px; /* Revert to original margin */
+    }
+
+    .nav-links ul li a {
+        font-size: 1em; /* Revert to original font size */
+    }
+
+    #information {
+        width: 1000px; /* Revert to original width */
+        height: 1000px; /* Revert to original height */
+        position: absolute; /* Revert to absolute positioning */
+        top: 50%;
+        left: -10%;
+        transform: translateY(-50%);
+        flex-direction: row; /* Layout items horizontally on desktop */
+    }
+
+    .overlay {
+        /* Revert to original overlay style for desktop */
+        width: 0;
+        height: 0;
+        border-top: 500px solid white;
+        border-right: 500px solid transparent;
+        border-bottom: 500px solid white;
+        border-left: 500px solid white;
+    }
+
+    .overlay::before {
+        content: none; /* Remove the scaling circle for desktop */
+    }
+
+    .teacher {
+        width: 250px; /* Revert to original size */
+        position: absolute; /* Revert to absolute positioning */
+        top: 61%;
+        left: 21%;
+        transform: translateY(-50%);
+    }
+
+    #circle {
+        width: 1000px; /* Revert to original size */
+        height: 1000px;
+        position: absolute; /* Revert to absolute positioning */
+        top: 0;
+        left: 0;
+        transform: rotate(0);
+    }
+
+    .feature img {
+        width: 70px; /* Revert to original icon size */
+    }
+
+    .feature div {
+        margin-left: 30px; /* Revert to original margin */
+    }
+
+    .feature div h1 {
+        font-size: 1.3em;
+    }
+
+    .feature div p {
+        font-size: 1em;
+    }
+
+    /* Revert feature positions for larger screens */
+    .one {
+        top: 450px;
+        right: 50px;
+        transform: rotate(0deg); /* Reset rotation applied for mobile positioning */
+    }
+    .two {
+        top: 150px;
+        left: 350px;
+        transform: rotate(-90deg);
+    }
+    .three {
+        bottom: 450px;
+        left: 50px;
+        transform: rotate(-180deg);
+    }
+    .four {
+        bottom: 150px;
+        right: 350px;
+        transform: rotate(-270deg);
+    }
+
+    .controls {
+        position: absolute; /* Revert to absolute positioning */
+        right: 10%;
+        top: 50%;
+        transform: translateY(-50%);
+        flex-direction: column; /* Stack controls vertically */
+    }
+
+    .controls h3 {
+        margin: 15px 0; /* Revert margin */
+    }
+
+    #upBtn, #downBtn {
+        width: 15px; /* Revert button size */
+        height: auto; /* Remove fixed height */
+        padding: 0;
+    }
+}
